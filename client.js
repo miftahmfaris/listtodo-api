@@ -1,8 +1,9 @@
 const axios = require("axios");
+const API_URL = "http://localhost:3000";
 
 const getAll = () => {
   return axios
-    .get("http://localhost:3000/todo")
+    .get(`${API_URL}/todo`)
     .then(rawResponse => {
       console.log(rawResponse.data);
     })
@@ -13,7 +14,7 @@ const getAll = () => {
 
 const getOne = () => {
   return axios
-    .get("http://localhost:3000/todo/0")
+    .get(`${API_URL}/todo/01`)
     .then(rawResponse => {
       console.log("Get One Data");
       console.log(rawResponse.data);
@@ -25,7 +26,7 @@ const getOne = () => {
 
 const addNew = () => {
   return axios
-    .post("http://localhost:3000/todo", {
+    .post(`${API_URL}/todo`, {
       todo: "Add new todo",
       done: true
     })
@@ -40,7 +41,7 @@ const addNew = () => {
 
 const deleteData = () => {
   return axios
-    .delete("http://localhost:3000/todo/0")
+    .delete(`${API_URL}/todo/0`)
     .then(rawResponse => {
       console.log("Delete data");
       console.log(rawResponse.data);
@@ -52,7 +53,7 @@ const deleteData = () => {
 
 const updateData = () => {
   return axios
-    .put("http://localhost:3000/todo/0", {
+    .put(`${API_URL}/todo/0`, {
       todo: "Update data",
       done: false
     })

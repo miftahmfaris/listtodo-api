@@ -1,7 +1,8 @@
-const cors = require('cors');
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const PORT = process.env.PORT || 3000;
 
 let todoList = [{
     todo: "Learn JS",
@@ -13,7 +14,7 @@ let todoList = [{
   }
 ];
 
-app.use(cors)
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: false
@@ -63,7 +64,7 @@ app.delete("/todo/:id", (req, res) => {
   let index = req.params.id;
 
   if (index > length - 1) {
-    res.send("Your data is invalid")
+    res.send("Your data is invalid");
     console.log("Your data is invalid");
   } else {
     res.send({
@@ -98,10 +99,10 @@ app.put("/todo/:id", (req, res) => {
 });
 
 app.get("/todo/search", (req, res) => {
-  let todo = req.body.todo
-  let search = todoList.filter(todos = todo)
+  let todo = req.body.todo;
+  let search = todoList.filter((todos = todo));
 
-  res.send(search)
-})
+  res.send(search);
+});
 
-app.listen(3000, () => console.log("Success"));
+app.listen(PORT, () => console.log(`Successful to connet ${PORT}`));
