@@ -20,6 +20,7 @@ app.use(
     extended: false
   })
 );
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -28,6 +29,14 @@ app.get("/", (req, res) => {
 app.use(bodyParser.json());
 app.get("/todo", (req, res) => {
   res.send(todoList);
+});
+
+app.get("/todo/search", (req, res) => {
+  let keyword = req.query.todo;
+  let search = todoList.filter(todos => {
+    return todos.todo.toLowerCase().includes(keyword.toLowerCase());
+  });
+  res.send(search);
 });
 
 app.get("/todo/:id", (req, res) => {
@@ -98,11 +107,4 @@ app.put("/todo/:id", (req, res) => {
   }
 });
 
-app.get("/todo/search", (req, res) => {
-  let todo = req.body.todo;
-  let search = todoList.filter((todos = todo));
-
-  res.send(search);
-});
-
-app.listen(PORT, () => console.log(`Successful to connet ${PORT}`));
+app.listen(PORT, () => console.log(`Successful to connect ${PORT}`));

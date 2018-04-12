@@ -65,7 +65,18 @@ const updateData = () => {
     })
 }
 
-console.log("TES");
+const searchData = () => {
+  return axios
+    .get(`${API_URL}/todo/search?todo=d`)
+    .then(rawResponse => {
+      console.log("Data Found");
+      console.log(rawResponse.data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}
+
 getAll();
 getOne();
 addNew();
@@ -73,4 +84,6 @@ getAll();
 deleteData();
 getAll();
 updateData();
+getAll();
+searchData();
 getAll();
