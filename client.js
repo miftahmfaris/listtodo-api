@@ -65,6 +65,7 @@ const updateData = () => {
     })
 }
 
+console.log("TES");
 getAll();
 getOne();
 addNew();
